@@ -5,7 +5,7 @@ import Layout from "../components/layout/Layout"
 import SEO from "../components/seo";
 
 
-const SecondPage = () => (
+const AboutUs = () => (
   <Layout>
     <SEO title="Page two" />
     <h1>Hi from the second page</h1>
@@ -14,4 +14,5 @@ const SecondPage = () => (
   </Layout>
 )
 
-export default SecondPage
+export default AboutUs;
+
