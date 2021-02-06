@@ -7,21 +7,24 @@ import Switch from '@material-ui/core/Switch';
 // Like https://github.com/brunobertolini/styled-by
 const styledBy = (property, mapping) => (props) => mapping[props[property]];
 
+// https://stackoverflow.com/questions/60607586/set-typography-text-color-in-material-ui
+// https://material-ui.com/customization/components/
+// https://www.globalcareercouncilbureau.com/services.html
+
 const styles = {
   root: {
     background: styledBy('color', {
-      default: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      blue: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+      default: 'blue',
+      dark: 'black',
     }),
     borderRadius: 3,
     border: 0,
-    color: 'white',
+    color: styledBy('color', {
+        default: 'black',
+        dark: 'white',
+      }),
     height: 48,
     padding: '0 30px',
-    boxShadow: styledBy('color', {
-      default: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      blue: '0 3px 5px 2px rgba(33, 203, 243, .3)',
-    }),
   },
 };
 
@@ -33,7 +36,7 @@ export default function SwitchComp() {
   const [color, setColor] = React.useState('default');
 
   const handleChange = (event) => {
-    setColor(event.target.checked ? 'blue' : 'default');
+    setColor(event.target.checked ? 'dark' : 'default');
   };
 
   return (
@@ -41,7 +44,7 @@ export default function SwitchComp() {
       <FormControlLabel
         control={
           <Switch
-            checked={color === 'blue'}
+            checked={color === 'dark'}
             onChange={handleChange}
             color="primary"
             value="dynamic-class-name"

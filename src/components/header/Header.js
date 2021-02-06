@@ -21,6 +21,7 @@ console.log(theme)
     },
     title: {
       flexGrow: 1,
+      color: `${theme.palette.text.primary}`,
     },
     appBar: {
       background: 'red'
@@ -42,7 +43,7 @@ export default function Header() {
   return (
     <div className={classes.root}>
       <AppBar position="static"  className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar className={classes.toolbar} variant="dense">
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
