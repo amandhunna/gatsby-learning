@@ -1,60 +1,52 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { useState } from "react"
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+
+import ThemeContext from './../../components/context';
+
 
 import Header from "../header/Header";
 import './layout.css';
 
 const Layout = ({ children }) => {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [themeType, setThemeType] = useState('default');
+  const [darkState, setDarkState] = useState(false);
 
-/*   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+  const palletType = darkState ? "dark" : "light";
+
+  const themeLight = createMuiTheme({
+    palette: {
+      type: palletType,
+      // text: {
+      //   primary: "#FFFFFF"
+      // },
+      primary: {
+        contrastText: "#fff",
+        dark: "#000000a0",
+        light: "yellow",
+        main: darkState? '#000000a0': "#afafaf",
       }
     }
-  `)
- */
+  });
 
+  const handleThemeChange = () => {
+    setDarkState(!darkState);
+  };
 
-const theme = createMuiTheme({
-  palette: {
-    text: {
-      primary: "#FFFFFF"
-    }
-  },
+const theme = themeLight
 
-  typography: {
-    useNextVariants: true,
-    fontFamily: "Montserrat",
-    h3: {
-      fontSize: 33,
-      fontFamily: "Montserrat",
-      fontWeight: 300,
-      color: "#2882F8",
-      letterSpacing: "0.0075em",
-      verticalAlign: "middle",
-      alignItems: "center",
-      textAlign: "center"
-    }
-  }
-});
+const contextValues = { themeType, setThemeType, darkState, setDarkState }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Header siteTitle={ `Title`} /> {/* data.site.siteMetadata?.title || */}
-      <div>
-        <main>{children}</main>
-        <footer> © {new Date().getFullYear()}, {` `} SAP-FICO
-        </footer>
-      </div>
+    <ThemeContext.Provider value={contextValues} >
+      <ThemeProvider theme={theme}>
+          <Header siteTitle={`Title`} /> {/* data.site.siteMetadata?.title || */}
+          <div>
+            <main>{children}</main>
+            <footer> © {new Date().getFullYear()}, {` `} SAP-FICO
+            </footer>
+          </div>
       </ThemeProvider>
+    </ThemeContext.Provider>
   )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "gatsby";
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,11 +7,13 @@ import Typography from '@material-ui/core/Typography';
 // import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
+// main 
+import themeContext from './../../components/context';
 
 import Switch from './../switch/Switch';
 
 const useStyles = makeStyles((theme) => { 
-console.log(theme)
+console.log(theme.palette.type, theme.palette.primary)
   return createStyles({
     root: {
       flexGrow: 1,
@@ -21,13 +23,13 @@ console.log(theme)
     },
     title: {
       flexGrow: 1,
-      color: `${theme.palette.text.primary}`,
+      color: `${theme.palette.primary}`,
     },
     appBar: {
-      background: 'red'
+      background: `${theme.palette.primary}`
     },
     toolbar: {
-      color: `${theme.palette.text.primary}`,
+      color: `${theme.palette.primary.dark}`,
     },
     link: {
       color: `${theme.palette.text.primary}`,
@@ -38,7 +40,8 @@ console.log(theme)
   })}
 );
 
-export default function Header() {
+export default function Header(props) {
+  const { themeType, setThemeType, setDarkState } = useContext(themeContext);
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -52,7 +55,7 @@ export default function Header() {
           </Typography>
           <Link className={classes.link} to="/">Home</Link>
           <Link className={classes.link} to="/aboutUs/">About Us</Link>
-          <Switch />
+          <Switch value={themeType} setValue={setThemeType} setDarkState={setDarkState}/>
         </Toolbar>
       </AppBar>
     </div>

@@ -14,7 +14,7 @@ const styledBy = (property, mapping) => (props) => mapping[props[property]];
 const styles = {
   root: {
     background: styledBy('color', {
-      default: 'blue',
+      default: 'white',
       dark: 'black',
     }),
     borderRadius: 3,
@@ -32,10 +32,12 @@ const StyledButton = withStyles(styles)(({ classes, color, ...other }) => (
   <Button className={classes.root} {...other} />
 ));
 
-export default function SwitchComp() {
-  const [color, setColor] = React.useState('default');
+export default function SwitchComp(props) {
+  const color = props.value;
+  const setColor = props.setValue;
 
   const handleChange = (event) => {
+    props.setDarkState(prev => !prev);
     setColor(event.target.checked ? 'dark' : 'default');
   };
 
