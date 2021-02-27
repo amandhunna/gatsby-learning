@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
+import CssBaseline from "@material-ui/core/CssBaseline";
 import ThemeContext from './../../components/context';
 
 
@@ -13,34 +13,34 @@ const Layout = ({ children }) => {
   const isDarkState = lsTheme === "dark";
 
   const palletType = isDarkState ? "dark" : "light";
-
+// #16a085, #27ae60, #2980b9, #8e44ad, #8e44ad, #2c3e50, https://flatuicolors.com/palette/defo (2nd row)
   const theme = createMuiTheme({
     palette: {
       type: palletType,
-      // text: {
-      //   primary: "#FFFFFF"
-      // },
       primary: {
         contrastText: "#fff",
-        dark: "#000000a0",
-        light: "yellow",
-        main: isDarkState? '#000000a0': "#afafaf",
-      }
+        dark: "#fff",
+        light: "#f1c40f",
+        main: isDarkState? '#000000a0': "#8e44ad",
+      },
+      background: {
+        default: isDarkState? '#018786': "#27ae60",
+      },
     }
   });
 
-
-
+console.log("thme", theme);
 
 const contextValues = { themeType, setThemeType, isDarkState }
 
   return (
     <ThemeContext.Provider value={contextValues} >
       <ThemeProvider theme={theme}>
+      <CssBaseline />
           <Header siteTitle={`Title`} /> {/* data.site.siteMetadata?.title || */}
           <div>
             <main>{children}</main>
-            <footer> © {new Date().getFullYear()}, {` `} SAP-FICO
+            <footer> © {new Date().getFullYear()}, {` `} amanjotsinghdhunna
             </footer>
           </div>
       </ThemeProvider>
