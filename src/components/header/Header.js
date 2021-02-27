@@ -13,7 +13,6 @@ import themeContext from './../../components/context';
 import Switch from './../switch/Switch';
 
 const useStyles = makeStyles((theme) => { 
-console.log(theme.palette.type, theme.palette.primary)
   return createStyles({
     root: {
       flexGrow: 1,
@@ -23,7 +22,7 @@ console.log(theme.palette.type, theme.palette.primary)
     },
     title: {
       flexGrow: 1,
-      color: `${theme.palette.primary}`,
+      color: `${theme.palette.text.primary}`,
     },
     appBar: {
       background: `${theme.palette.primary}`
@@ -40,8 +39,8 @@ console.log(theme.palette.type, theme.palette.primary)
   })}
 );
 
-export default function Header(props) {
-  const { themeType, setThemeType, setDarkState } = useContext(themeContext);
+export default function Header() {
+  const { themeType, setThemeType } = useContext(themeContext);
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -55,7 +54,7 @@ export default function Header(props) {
           </Typography>
           <Link className={classes.link} to="/">Home</Link>
           <Link className={classes.link} to="/aboutUs/">About Us</Link>
-          <Switch value={themeType} setValue={setThemeType} setDarkState={setDarkState}/>
+          <Switch value={themeType} setValue={setThemeType}/>
         </Toolbar>
       </AppBar>
     </div>

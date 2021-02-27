@@ -8,12 +8,13 @@ import Header from "../header/Header";
 import './layout.css';
 
 const Layout = ({ children }) => {
-  const [themeType, setThemeType] = useState('default');
-  const [darkState, setDarkState] = useState(false);
+  const lsTheme = localStorage.getItem('themeType')  || 'default';
+  const [themeType, setThemeType] = useState(lsTheme);
+  const isDarkState = lsTheme === "dark";
 
-  const palletType = darkState ? "dark" : "light";
+  const palletType = isDarkState ? "dark" : "light";
 
-  const themeLight = createMuiTheme({
+  const theme = createMuiTheme({
     palette: {
       type: palletType,
       // text: {
@@ -23,18 +24,15 @@ const Layout = ({ children }) => {
         contrastText: "#fff",
         dark: "#000000a0",
         light: "yellow",
-        main: darkState? '#000000a0': "#afafaf",
+        main: isDarkState? '#000000a0': "#afafaf",
       }
     }
   });
 
-  const handleThemeChange = () => {
-    setDarkState(!darkState);
-  };
 
-const theme = themeLight
 
-const contextValues = { themeType, setThemeType, darkState, setDarkState }
+
+const contextValues = { themeType, setThemeType, isDarkState }
 
   return (
     <ThemeContext.Provider value={contextValues} >
