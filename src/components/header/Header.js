@@ -50,10 +50,9 @@ export default function Header() {
             <MenuIcon />
           </IconButton> */}
           <Typography variant="h6" className={classes.title}>
-            SAP FICO
+             <Link className={classes.link} to="/">Home</Link>
+             <Link className={classes.link} to="/contact/">Contact me</Link>
           </Typography>
-          <Link className={classes.link} to="/">Home</Link>
-          <Link className={classes.link} to="/aboutUs/">About Us</Link>
           <Switch value={themeType} setValue={setThemeType}/>
         </Toolbar>
       </AppBar>

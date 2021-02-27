@@ -35,11 +35,12 @@ const StyledButton = withStyles(styles)(({ classes, color, ...other }) => (
   <Button className={classes.root} {...other} />
 ));
 
-const labelStyle = makeStyles(() => ({
+const labelStyle = makeStyles((theme) => ({
   label: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    color: theme.palette.type === 'dark'? theme.palette.primary.dark: theme.palette.primary.light
   },
 }));
 
