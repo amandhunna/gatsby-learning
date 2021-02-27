@@ -5,6 +5,7 @@ import ThemeContext from './../../components/context';
 
 
 import Header from "../header/Header";
+import Footer from '../footer/Footer';
 import './layout.css';
 
 const Layout = ({ children }) => {
@@ -37,12 +38,9 @@ const contextValues = { themeType, setThemeType, isDarkState }
     <ThemeContext.Provider value={contextValues} >
       <ThemeProvider theme={theme}>
       <CssBaseline />
-          <Header siteTitle={`Title`} /> {/* data.site.siteMetadata?.title || */}
-          <div>
-            <main>{children}</main>
-            <footer> © {new Date().getFullYear()}, {` `} amanjotsinghdhunna
-            </footer>
-          </div>
+      <Header siteTitle={`Title`} /> {/* data.site.siteMetadata?.title || */}
+      <main>{children}</main>
+      <Footer />
       </ThemeProvider>
     </ThemeContext.Provider>
   )
