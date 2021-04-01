@@ -3,7 +3,6 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import themeContext from './../../components/context';
-
 const useStyles = makeStyles((theme) => { 
   return createStyles({
     root: {
