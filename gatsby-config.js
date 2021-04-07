@@ -5,6 +5,12 @@ module.exports = {
     author: `amanjotsinghdhunna`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `amajotsinghdhunna`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
