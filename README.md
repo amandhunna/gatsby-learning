@@ -7,3 +7,7 @@
 <h1 align="center">
   Learning Gatsby
 </h1>
+
+- repo to learn working of gatsby
+
+- release link : https://amanjotsinghdhunna0.netlify.app/
