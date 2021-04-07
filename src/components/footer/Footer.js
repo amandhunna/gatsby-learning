@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-import themeContext from './../../components/context';
-const useStyles = makeStyles((theme) => { 
+//import themeContext from './../../components/context';
+const useStyles = makeStyles(() => { 
   return createStyles({
     root: {
       flexGrow: 1,
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => {
 );
 
 export default function Footer() {
-  const { themeType, setThemeType } = useContext(themeContext);
+  //const { themeType, setThemeType } = useContext(themeContext);
   const classes = useStyles();
   return (
     <footer className={classes.root}> 

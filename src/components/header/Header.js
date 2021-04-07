@@ -51,7 +51,8 @@ export default function Header() {
           </IconButton> */}
           <Typography variant="h6" className={classes.title}>
              <Link className={classes.link} to="/">Home</Link>
-             <Link className={classes.link} to="/contact/">Contact me</Link>
+             <Link className={classes.link} to="/about">About</Link>
+             <Link className={classes.link} to="/contact/">Contact</Link>
           </Typography>
           <Switch value={themeType} setValue={setThemeType}/>
         </Toolbar>
